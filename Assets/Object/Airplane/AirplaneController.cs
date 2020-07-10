@@ -18,3 +18,4 @@ public class AirplaneController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, destinationPosition, speed * Time.deltaTime);
     }
 }
+
