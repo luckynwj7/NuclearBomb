@@ -28,6 +28,8 @@ public class ZombieCharacterControl : MonoBehaviour
     private float forwardMovingAxis = 0.0f;
     private float turningAxis = 0.0f;
 
+    private float minStandingValue = 45; // 해당 각도가 넘어가면 다시 원위치로 돌아옴
+
     void Awake()
     {
         m_animator = GetComponentInChildren<Animator>();
@@ -35,12 +37,19 @@ public class ZombieCharacterControl : MonoBehaviour
         //if (!m_animator) { gameObject.GetComponent<Animator>(); }
         //if (!m_rigidBody) { gameObject.GetComponent<Rigidbody>(); }
 
-        InvokeRepeating("RandomMoveForward", 0.0f, 2.0f); // 2초뒤 LaunchProjectile함수 호출
+        
+        InvokeRepeating("RandomMoveForward", 0.0f, Random.Range(0, 4));
         //InvokeRepeating("RandomTurning", 0.0f, 6.0f); // 2초뒤 LaunchProjectile함수 호출
+    }
+
+    private void Start()
+    {
+        
     }
 
     void Update()
     {
+        //transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         switch (m_controlMode)
         {
             case ControlMode.Direct:
@@ -75,6 +84,7 @@ public class ZombieCharacterControl : MonoBehaviour
         transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
 
         m_animator.SetFloat("MoveSpeed", m_currentV);
+        Standing();
     }
 
     private void DirectUpdate()
@@ -98,6 +108,16 @@ public class ZombieCharacterControl : MonoBehaviour
     {
         forwardMovingAxis = 0.0f;
         turningAxis = Random.Range(-1.0f, 1.0f);
+    }
+
+    private void Standing()
+    {
+        // 넘어질 때 일어서는 변수
+        if(transform.eulerAngles.x > minStandingValue || transform.eulerAngles.z > minStandingValue)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0) * Time.deltaTime);
+                
+        }
     }
 
 

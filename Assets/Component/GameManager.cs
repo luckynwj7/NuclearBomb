@@ -54,6 +54,14 @@ public class GameManager
         set { airplane2 = value; }
     }
 
+    // 그 외 환경적인 요인
+    private Vector3 bombAimPosition;
+    public Vector3 BombAimPosition
+    {
+        get { return bombAimPosition; }
+        set { bombAimPosition = value; }
+    }
+
     private void GameManagerInit()
     {
 

@@ -50,9 +50,9 @@ public class AirplaneSpawner : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, bombAim.transform.position.z);
             destinationPosition = new Vector3(destination.transform.position.x, transform.position.y, transform.position.z);
             spawnFlag = true;
-            Vector3 initRotateVec = new Vector3(-90, 90, 0);
+            //Vector3 initRotateVec = new Vector3(-90, 90, 0);
             airplane.transform.position = transform.position;
-            airplane.transform.rotation = Quaternion.Euler(initRotateVec);
+            //airplane.transform.rotation = Quaternion.Euler(initRotateVec);
             Instantiate(airplane);
         }
     }
