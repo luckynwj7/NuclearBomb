@@ -53,6 +53,12 @@ public class GameManager
         get { return airplane2; }
         set { airplane2 = value; }
     }
+    private GameObject bomb;
+    public GameObject Bomb
+    {
+        get { return bomb; }
+        set { bomb = value; }
+    }
 
     // 그 외 환경적인 요인
     private Vector3 bombAimPosition;

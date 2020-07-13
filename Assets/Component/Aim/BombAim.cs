@@ -54,6 +54,7 @@ public class BombAim : MonoBehaviour
     void Update()
     {
         MoveAimUsingKey();
+        SaveBombPosition();
     }
 
     private void MoveAimUsingKey()
@@ -121,6 +122,14 @@ public class BombAim : MonoBehaviour
             Vector3 targetVec = new Vector3(transform.position.x, mainCameraPosition.y, transform.position.z); // y축은 그대로 유지시킴
             float cameraMoveSpeed = (float)speed * (mainCameraDistance - maxDistance); // 떨어진 거리만큼 더 빠르게 카메라 복귀
             mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, targetVec, cameraMoveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void SaveBombPosition()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            GameManager.GetGameManager.BombAimPosition = transform.position;
         }
     }
 

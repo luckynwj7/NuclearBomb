@@ -12,6 +12,7 @@ public class GameManagerInflator : MonoBehaviour
     // 생성되지 않은 객체에 대해 적용
     public GameObject airplane1;
     public GameObject airplane2;
+    public GameObject bomb;
 
     // Start is called before the first frame update
     GameManagerInflator()
@@ -22,6 +23,7 @@ public class GameManagerInflator : MonoBehaviour
     {
         gameManager.Airpplane1 = airplane1;
         gameManager.Airpplane2 = airplane2;
+        gameManager.Bomb = bomb;
         Debug.Log("게임매니저 후삽입 완료");
     }
 
